@@ -22,9 +22,11 @@ import {
   ChevronRight,
   Clock,
   ArrowLeft,
+  Mail,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getProductBySlug } from "@/lib/products";
+import { OrderTimeline } from "@/components/order-timeline";
 
 interface ProductPageProps {
   params: Promise<{ slug: string }>;
@@ -249,10 +251,23 @@ export default function ProductPage({ params }: ProductPageProps) {
                     Buy Now
                   </a>
                 </Button>
-                <p className="text-sm text-muted-foreground max-w-md">
-                  Each piece is handcrafted to order. Please allow time for
-                  creation and shipping.
-                </p>
+                <div className="space-y-2 text-sm text-muted-foreground max-w-md">
+                  <p>
+                    Each piece is handcrafted to order. Please allow time for
+                    creation and shipping.
+                  </p>
+                  <div className="flex items-start gap-2 pt-2 border-t">
+                    <Mail className="h-4 w-4 mt-0.5 shrink-0" />
+                    <p>
+                      <span className="font-medium text-foreground">
+                        Order Confirmation:
+                      </span>{" "}
+                      You'll receive an email confirmation immediately after
+                      completing your purchase with order details and next
+                      steps.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -311,6 +326,17 @@ export default function ProductPage({ params }: ProductPageProps) {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Order Timeline Section */}
+      <section className="border-t bg-background">
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <Card>
+            <CardContent className="pt-6">
+              <OrderTimeline />
+            </CardContent>
+          </Card>
         </div>
       </section>
     </div>

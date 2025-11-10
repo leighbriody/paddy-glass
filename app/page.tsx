@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock } from "lucide-react";
 import { products } from "@/lib/products";
+import { OrderTimeline } from "@/components/order-timeline";
 
 export default function Home() {
   return (
@@ -162,6 +163,17 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Order Process Timeline */}
+      <section className="border-t bg-background">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+          <Card>
+            <CardContent className="pt-6">
+              <OrderTimeline />
+            </CardContent>
+          </Card>
         </div>
       </section>
 
