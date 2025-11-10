@@ -9,18 +9,37 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="sticky top-0 z-50 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto max-w-7xl px-4 py-4 md:py-6">
-          <Link href="/">
-            <h1 className="text-2xl font-semibold tracking-tight md:text-3xl hover:opacity-80 transition-opacity">
-              Paddy O'Brien Glass
-            </h1>
-          </Link>
+          <nav className="flex items-center justify-between">
+            <Link href="/" className="hover:opacity-80 transition-opacity">
+              <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
+                Paddy O'Brien Glass
+              </h1>
+            </Link>
+            <div className="flex gap-6">
+              <a
+                href="#products"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Products
+              </a>
+              <a
+                href="#about"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                About
+              </a>
+            </div>
+          </nav>
         </div>
       </header>
 
       {/* Products Grid */}
-      <section className="mx-auto max-w-7xl px-4 py-12 md:py-20">
+      <section
+        id="products"
+        className="mx-auto max-w-7xl px-4 py-12 md:py-20 scroll-mt-20"
+      >
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Handcrafted Stained Glass Art
@@ -73,6 +92,76 @@ export default function Home() {
               </Card>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* About Me Section */}
+      <section id="about" className="border-t bg-muted/30 scroll-mt-20">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            {/* Hero Image */}
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-muted">
+              <Image
+                src="/about_hero.png"
+                alt="Paddy O'Brien - Stained Glass Artist"
+                fill
+                className="object-cover"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="space-y-6">
+              <div>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                  About Paddy O'Brien
+                </h2>
+                <div className="mt-4 h-1 w-20 bg-primary" />
+              </div>
+
+              <div className="space-y-4 text-lg leading-relaxed text-muted-foreground">
+                <p>
+                  I'm a passionate stained glass artist dedicated to preserving
+                  and celebrating Irish heritage through the timeless art of
+                  stained glass. Each piece I create is a labor of love,
+                  handcrafted with meticulous attention to detail and a deep
+                  respect for traditional techniques.
+                </p>
+                <p>
+                  My work draws inspiration from Ireland's rich history,
+                  culture, and mythology. From commemorating significant
+                  historical events to celebrating the beauty of Celtic design,
+                  every piece tells a story and connects us to our heritage.
+                </p>
+                <p>
+                  Every stained glass artwork is made to order, ensuring that
+                  each piece receives the care and craftsmanship it deserves. I
+                  work with traditional materials including hand-blown glass and
+                  lead came, creating pieces that will be treasured for
+                  generations to come.
+                </p>
+              </div>
+
+              <div className="pt-4">
+                <div className="flex flex-wrap gap-4 text-sm">
+                  <div>
+                    <span className="font-medium text-foreground">
+                      Location:
+                    </span>
+                    <span className="ml-2 text-muted-foreground">Ireland</span>
+                  </div>
+                  <div>
+                    <span className="font-medium text-foreground">
+                      Specialty:
+                    </span>
+                    <span className="ml-2 text-muted-foreground">
+                      Irish Heritage Art
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
