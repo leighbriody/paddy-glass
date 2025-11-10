@@ -19,6 +19,7 @@ import {
   ZoomIn,
   ChevronLeft,
   ChevronRight,
+  Clock,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -198,14 +199,18 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div className="pt-4 space-y-2">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold">${product.price}</span>
+                    <span className="text-4xl font-bold">€{product.price}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <Clock className="h-4 w-4" />
+                    <span>Made to Order</span>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 space-y-3">
                 <Button
                   size="lg"
                   className="w-full sm:w-auto text-lg px-8 py-6"
@@ -220,6 +225,10 @@ export default function Home() {
                     Buy Now
                   </a>
                 </Button>
+                <p className="text-sm text-muted-foreground max-w-md">
+                  Each piece is handcrafted to order. Please allow time for
+                  creation and shipping.
+                </p>
               </div>
             </div>
           </div>
@@ -245,6 +254,13 @@ export default function Home() {
                     <span className="text-muted-foreground">Dimensions:</span>
                     <span className="font-medium">{product.dimensions}</span>
                   </div>
+                  <div className="flex justify-between items-center pt-2 border-t">
+                    <span className="text-muted-foreground">Availability:</span>
+                    <Badge variant="secondary" className="font-medium">
+                      <Clock className="mr-1 h-3 w-3" />
+                      Made to Order
+                    </Badge>
+                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -259,7 +275,11 @@ export default function Home() {
                   Each stained glass artwork comes with care instructions to
                   ensure it remains beautiful for years to come.
                 </p>
-                <div className="text-sm text-muted-foreground">
+                <div className="text-sm text-muted-foreground space-y-1">
+                  <p className="font-medium text-foreground">
+                    Production & Shipping:
+                  </p>
+                  <p>• Made to order - each piece is handcrafted</p>
                   <p>• Secure packaging</p>
                   <p>• Insured shipping</p>
                   <p>• Care instructions included</p>
