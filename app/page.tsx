@@ -7,17 +7,16 @@ import { ShoppingCart, Sparkles, Ruler } from "lucide-react";
 
 // Product data - you can move this to a separate file or CMS later
 const product = {
-  name: "Stained Glass Art Piece",
+  name: "ÉIRE - Irish Culture Stained Glass",
   description:
-    "A beautiful handcrafted stained glass piece that captures light and color in a unique way. Each piece is carefully crafted with attention to detail and artistic vision.",
+    "A stunning handcrafted stained glass piece celebrating Irish heritage and culture. Featuring the word 'ÉIRE' (Ireland) in elegant Celtic script, a detailed map of Ireland, and traditional Celtic knotwork designs. This commemorative piece honors the 1916 Easter Rising with the inscription '19 Sláinte 16' and includes key elements of Irish culture: wisdom (Saíocht), artistry (Ealaíonaíocht), poetry (dánta), music (CEOL), and the Irish language (Gaeilge).",
   price: 299,
   dimensions: '12" × 18"',
   material: "Hand-blown glass, lead came",
   artist: "Paddy Glass",
   stripeUrl: "https://buy.stripe.com/your-link-here", // Replace with actual Stripe link
   images: [
-    "/glass-piece-1.jpg", // You'll need to add these images to /public
-    "/glass-piece-2.jpg",
+    "/irish_culutre.png",
   ],
 };
 

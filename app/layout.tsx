@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Stained Glass Art | Paddy Glass",
+  title: "ÉIRE - Irish Culture Stained Glass | Paddy Glass",
   description:
-    "Handcrafted stained glass art piece. Unique, beautiful, and ready to illuminate your space.",
+    "Handcrafted stained glass art celebrating Irish heritage. Featuring Celtic designs, a map of Ireland, and commemorating the 1916 Easter Rising. Unique, beautiful, and ready to illuminate your space.",
 };
 
 export default function RootLayout({
