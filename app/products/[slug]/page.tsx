@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -27,11 +27,11 @@ import { cn } from "@/lib/utils";
 import { getProductBySlug } from "@/lib/products";
 
 interface ProductPageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export default function ProductPage({ params }: ProductPageProps) {
-  const { slug } = params;
+  const { slug } = use(params);
   const product = getProductBySlug(slug);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
