@@ -22,7 +22,7 @@ export const products: Product[] = [
     dimensions: '12" × 18"',
     material: "Hand-blown glass, lead came",
     artist: "Paddy O'Brien",
-    stripeUrl: "https://buy.stripe.com/your-link-here",
+    stripeUrl: "https://buy.stripe.com/bJecN5fg565T7JX94vfIs00",
     images: [
       "/irish_culutre.png",
       "/irish_culutre2.png",
