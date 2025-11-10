@@ -59,6 +59,15 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="mx-auto max-w-7xl px-4 py-4 md:py-6">
+          <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            Paddy O'Brien Glass
+          </h1>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative w-full">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-20">
