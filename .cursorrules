@@ -1,0 +1,33 @@
+# Cursor Rules for paddy-glass
+
+## Component Library
+
+- **shadcn/ui** is the primary component library for this project
+- Components are installed using: `npx shadcn@latest add [component-name]`
+- Components are located in `@/components/ui`
+- Always use shadcn/ui components when available instead of building custom components from scratch
+- The project uses the "new-york" style variant
+- Base color scheme: Neutral
+- Icon library: Lucide React
+
+## Project Structure
+
+- Next.js 16 with App Router
+- TypeScript with strict mode
+- Tailwind CSS v4 for styling
+- Components should be placed in `@/components/ui` (shadcn) or `@/components` (custom)
+- Utilities are in `@/lib/utils` (includes the `cn()` helper for className merging)
+
+## Styling Guidelines
+
+- Use Tailwind CSS utility classes
+- Use the `cn()` utility from `@/lib/utils` for conditional className merging
+- Follow shadcn/ui design patterns and component APIs
+- Support dark mode (CSS variables are already configured)
+
+## Code Style
+
+- Use TypeScript for all components
+- Follow React 19 best practices
+- Use functional components with proper TypeScript types
+- Ensure components are accessible and follow shadcn/ui accessibility standards
