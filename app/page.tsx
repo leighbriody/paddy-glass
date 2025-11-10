@@ -1,9 +1,26 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { ShoppingCart, Sparkles, Ruler } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  ShoppingCart,
+  Sparkles,
+  Ruler,
+  ZoomIn,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
 // Product data - you can move this to a separate file or CMS later
 const product = {
@@ -17,26 +34,136 @@ const product = {
   stripeUrl: "https://buy.stripe.com/your-link-here", // Replace with actual Stripe link
   images: [
     "/irish_culutre.png",
+    "/irish_culutre2.png",
+    "/irish_culutre3.png",
+    "/irish_culutre4.png",
   ],
 };
 
 export default function Home() {
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === product.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setSelectedImageIndex((prev) =>
+      prev === 0 ? product.images.length - 1 : prev - 1
+    );
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative w-full">
         <div className="mx-auto max-w-7xl px-4 py-12 md:py-20">
           <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
-            {/* Image Gallery */}
-            <div className="relative aspect-square w-full overflow-hidden rounded-lg border bg-muted">
-              <Image
-                src={product.images[0] || "/placeholder-glass.jpg"}
-                alt={product.name}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+            {/* Image Gallery - Clickable */}
+            <div className="space-y-4">
+              <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogTrigger asChild>
+                  <button className="relative aspect-square w-full overflow-hidden rounded-lg border bg-muted group cursor-pointer hover:opacity-95 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+                    <Image
+                      src={
+                        product.images[selectedImageIndex] ||
+                        "/placeholder-glass.jpg"
+                      }
+                      alt={`${product.name} - View ${selectedImageIndex + 1}`}
+                      fill
+                      className="object-contain"
+                      priority
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    {/* Zoom overlay indicator */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-background/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
+                        <ZoomIn className="h-6 w-6 text-foreground" />
+                      </div>
+                    </div>
+                  </button>
+                </DialogTrigger>
+                <DialogContent
+                  className="max-w-5xl w-full p-0 bg-transparent border-none"
+                  onKeyDown={(e) => {
+                    if (e.key === "ArrowLeft") prevImage();
+                    if (e.key === "ArrowRight") nextImage();
+                  }}
+                >
+                  <DialogTitle className="sr-only">
+                    {product.name} - Full Size View ({selectedImageIndex + 1} of{" "}
+                    {product.images.length})
+                  </DialogTitle>
+                  <div className="relative w-full aspect-auto max-h-[90vh] flex items-center justify-center bg-background/95 backdrop-blur-sm rounded-lg p-4">
+                    {/* Previous Button */}
+                    {product.images.length > 1 && (
+                      <button
+                        onClick={prevImage}
+                        className="absolute left-4 z-10 rounded-full bg-background/80 backdrop-blur-sm p-2 shadow-lg hover:bg-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="h-6 w-6" />
+                      </button>
+                    )}
+                    {/* Main Image */}
+                    <Image
+                      src={
+                        product.images[selectedImageIndex] ||
+                        "/placeholder-glass.jpg"
+                      }
+                      alt={`${product.name} - View ${selectedImageIndex + 1}`}
+                      width={1200}
+                      height={1600}
+                      className="object-contain max-h-[85vh] w-auto h-auto rounded-lg"
+                      priority={selectedImageIndex === 0}
+                    />
+                    {/* Next Button */}
+                    {product.images.length > 1 && (
+                      <button
+                        onClick={nextImage}
+                        className="absolute right-4 z-10 rounded-full bg-background/80 backdrop-blur-sm p-2 shadow-lg hover:bg-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="h-6 w-6" />
+                      </button>
+                    )}
+                    {/* Image Counter */}
+                    {product.images.length > 1 && (
+                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-background/80 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium shadow-lg">
+                        {selectedImageIndex + 1} / {product.images.length}
+                      </div>
+                    )}
+                  </div>
+                </DialogContent>
+              </Dialog>
+              {/* Thumbnail Navigation */}
+              {product.images.length > 1 && (
+                <div className="grid grid-cols-4 gap-2">
+                  {product.images.map((image, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedImageIndex(index)}
+                      className={cn(
+                        "relative aspect-square overflow-hidden rounded-md border-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                        selectedImageIndex === index
+                          ? "border-primary opacity-100"
+                          : "border-transparent opacity-60 hover:opacity-100"
+                      )}
+                      aria-label={`View image ${index + 1}`}
+                    >
+                      <Image
+                        src={image}
+                        alt={`${product.name} - Thumbnail ${index + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Product Info */}
