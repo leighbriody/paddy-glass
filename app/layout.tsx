@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ÉIRE - Irish Culture Stained Glass | Paddy Glass",
+  title: "Aaron O'Brien Stained Glass Artist",
   description:
-    "Handcrafted stained glass art celebrating Irish heritage. Featuring Celtic designs, a map of Ireland, and commemorating the 1916 Easter Rising. Unique, beautiful, and ready to illuminate your space.",
+    "Handcrafted stained glass art piece by Aaron O'Brien. Unique, beautiful, and ready to illuminate your space.",
 };
 
 export default function RootLayout({
