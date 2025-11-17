@@ -1,8 +1,16 @@
-export interface ProductVariation {
-  id: string;
+export interface DeliveryOption {
+  id: "collect" | "delivery";
   name: string;
   price: number;
   stripeUrl?: string;
+}
+
+export interface ProductVariation {
+  id: string;
+  name: string;
+  basePrice: number;
+  collect: DeliveryOption;
+  delivery: DeliveryOption;
 }
 
 export interface Product {
@@ -14,6 +22,8 @@ export interface Product {
   images: string[];
   variations: ProductVariation[];
 }
+
+const DELIVERY_FEE = 15;
 
 export const product: Product = {
   id: "ireland-proclamation",
@@ -32,14 +42,36 @@ export const product: Product = {
     {
       id: "clear-glass",
       name: "Clear Glass",
-      price: 80,
-      stripeUrl: "https://buy.stripe.com/bJecN5fg565T7JX94vfIs00", // Update with actual Stripe URL
+      basePrice: 80,
+      collect: {
+        id: "collect",
+        name: "Collect from Drogheda, Ireland",
+        price: 80,
+        stripeUrl: "https://buy.stripe.com/bJe9AL1WV9oD8H4gnlfrW01",
+      },
+      delivery: {
+        id: "delivery",
+        name: "Delivery",
+        price: 95, // 80 + 15
+        stripeUrl: "https://buy.stripe.com/4gM28j9pngR5cXkgnlfrW00",
+      },
     },
     {
       id: "yellow-silver-stain",
       name: "Yellow Silver Stain",
-      price: 98,
-      stripeUrl: "https://buy.stripe.com/bJecN5fg565T7JX94vfIs00", // Update with actual Stripe URL
+      basePrice: 98,
+      collect: {
+        id: "collect",
+        name: "Collect from Drogheda, Ireland",
+        price: 98,
+        stripeUrl: "https://buy.stripe.com/6oU5kvatr1Wbf5sfjhfrW03",
+      },
+      delivery: {
+        id: "delivery",
+        name: "Delivery",
+        price: 113, // 98 + 15
+        stripeUrl: "https://buy.stripe.com/28EbIT30Z0S75uSefdfrW02",
+      },
     },
   ],
 };
