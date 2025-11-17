@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { AlertCircle } from "lucide-react";
 import { product } from "@/lib/products";
 import { ProductDisplay } from "@/components/product-display";
 
@@ -22,8 +21,7 @@ export default function Home() {
       {/* Christmas Sale Banner */}
       <div className="border-b bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/20 dark:to-orange-950/20">
         <div className="mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center justify-center gap-2 text-center">
-            <AlertCircle className="h-4 w-4 text-red-600 dark:text-red-400 shrink-0" />
+          <div className="flex items-center justify-center text-center">
             <p className="text-sm font-semibold text-red-900 dark:text-red-100">
               <span className="font-bold">🎄 CHRISTMAS SALE:</span> Prices
               increase after Christmas. Order now to lock in these prices.
