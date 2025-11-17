@@ -148,12 +148,6 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                     {product.dimensions}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Material:</span>
-                  <span className="font-medium text-foreground">
-                    {product.material}
-                  </span>
-                </div>
               </div>
 
               {/* Buy Button */}

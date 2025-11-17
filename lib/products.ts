@@ -31,7 +31,7 @@ export const product: Product = {
   name: "Ireland Proclamation",
   description:
     "A stunning handcrafted stained glass piece celebrating Irish heritage and culture. This commemorative piece honors the 1916 Easter Rising and features traditional Celtic designs.",
-  dimensions: '12" × 18"',
+  dimensions: "23cm × 16cm",
   material: "Hand-blown glass, lead came",
   images: [
     "/irish_culutre.png",
