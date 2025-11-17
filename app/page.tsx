@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Clock } from "lucide-react";
-import { products } from "@/lib/products";
+import { product } from "@/lib/products";
+import { ProductDisplay } from "@/components/product-display";
 import { OrderTimeline } from "@/components/order-timeline";
 
 export default function Home() {
@@ -36,7 +35,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Products Grid */}
+      {/* Product Section */}
       <section
         id="products"
         className="mx-auto max-w-7xl px-4 py-12 md:py-20 scroll-mt-20"
@@ -51,49 +50,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <Link
-              key={product.id}
-              href={`/products/${product.slug}`}
-              className="group"
-            >
-              <Card className="h-full overflow-hidden transition-all hover:shadow-lg hover:scale-[1.02]">
-                <div className="relative aspect-square w-full overflow-hidden bg-muted">
-                  <Image
-                    src={product.images[0]}
-                    alt={product.name}
-                    fill
-                    className="object-contain transition-transform group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-2">
-                    <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {product.name}
-                    </CardTitle>
-                    <Badge variant="secondary" className="shrink-0">
-                      <Clock className="mr-1 h-3 w-3" />
-                      Made to Order
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                    {product.description}
-                  </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold">€{product.price}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {product.dimensions}
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ))}
-        </div>
+        <ProductDisplay product={product} />
       </section>
 
       {/* About Me Section */}
