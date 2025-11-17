@@ -9,6 +9,7 @@ export interface ProductVariation {
   id: string;
   name: string;
   basePrice: number;
+  images: string[];
   collect: DeliveryOption;
   delivery: DeliveryOption;
 }
@@ -43,6 +44,7 @@ export const product: Product = {
       id: "clear-glass",
       name: "Clear Glass",
       basePrice: 80,
+      images: ["/clear/clear.jpeg"],
       collect: {
         id: "collect",
         name: "Collect from Drogheda, Ireland",
@@ -60,6 +62,7 @@ export const product: Product = {
       id: "yellow-silver-stain",
       name: "Yellow Silver Stain",
       basePrice: 98,
+      images: ["/yellow/yellow.jpeg"],
       collect: {
         id: "collect",
         name: "Collect from Drogheda, Ireland",

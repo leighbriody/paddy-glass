@@ -33,8 +33,8 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
           {/* Image Gallery */}
           <div className="relative aspect-square w-full overflow-hidden bg-muted">
             <Image
-              src={product.images[0]}
-              alt={product.name}
+              src={selectedVariation.images[0]}
+              alt={`${product.name} - ${selectedVariation.name}`}
               fill
               className="object-contain"
               sizes="(max-width: 768px) 100vw, 50vw"
