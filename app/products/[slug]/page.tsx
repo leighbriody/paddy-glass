@@ -78,7 +78,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </Link>
             <Link href="/">
               <h1 className="text-2xl font-semibold tracking-tight md:text-3xl hover:opacity-80 transition-opacity">
-                Aaron O brien stained glass artist
+                Aaron O brien Stained Glass Artist
               </h1>
             </Link>
           </div>

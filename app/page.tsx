@@ -11,7 +11,7 @@ export default function Home() {
           <nav className="flex items-center justify-between">
             <Link href="/" className="hover:opacity-80 transition-opacity">
               <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
-                Aaron O brien stained glass artist
+                Aaron O brien Stained Glass Artist
               </h1>
             </Link>
           </nav>
