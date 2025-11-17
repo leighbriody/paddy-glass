@@ -23,16 +23,6 @@ export default function Home() {
         id="products"
         className="mx-auto max-w-7xl px-4 py-12 md:py-20 scroll-mt-20"
       >
-        <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Handcrafted Stained Glass Art
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Each piece is carefully crafted to order, celebrating Irish heritage
-            and culture through the timeless art of stained glass.
-          </p>
-        </div>
-
         <ProductDisplay product={product} />
       </section>
     </div>
