@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Clock, ShoppingCart, MapPin, Truck } from "lucide-react";
+import { Clock, ShoppingCart, MapPin, Truck, Check } from "lucide-react";
 import { Product } from "@/lib/products";
 import { cn } from "@/lib/utils";
 
@@ -57,10 +57,15 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                     className={cn(
                       "relative group rounded-lg border-2 overflow-hidden transition-all",
                       selectedVariation.id === variation.id
-                        ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                        ? "border-primary bg-primary/10 ring-2 ring-primary/30 shadow-md"
                         : "border-border hover:border-primary/50"
                     )}
                   >
+                    {selectedVariation.id === variation.id && (
+                      <div className="absolute top-2 right-2 z-10 bg-primary text-primary-foreground rounded-full p-1.5 shadow-lg">
+                        <Check className="h-4 w-4" />
+                      </div>
+                    )}
                     <div className="relative aspect-square w-full bg-muted">
                       <Image
                         src={variation.images[0]}
@@ -70,11 +75,17 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                         sizes="(max-width: 768px) 50vw, 25vw"
                       />
                       {selectedVariation.id === variation.id && (
-                        <div className="absolute inset-0 bg-primary/10" />
+                        <div className="absolute inset-0 bg-primary/15" />
                       )}
                     </div>
                     <div className="p-3 text-center">
-                      <div className="text-sm font-semibold mb-1">
+                      <div
+                        className={cn(
+                          "text-sm font-semibold mb-1",
+                          selectedVariation.id === variation.id &&
+                            "text-primary"
+                        )}
+                      >
                         {variation.name}
                       </div>
                       <div className="text-lg font-bold text-primary">
@@ -95,12 +106,17 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                 <button
                   onClick={() => setSelectedDeliveryOption("collect")}
                   className={cn(
-                    "text-left p-4 rounded-lg border-2 transition-all",
+                    "relative text-left p-4 rounded-lg border-2 transition-all",
                     selectedDeliveryOption === "collect"
-                      ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                      ? "border-primary bg-primary/10 ring-2 ring-primary/30 shadow-md"
                       : "border-border hover:border-primary/50"
                   )}
                 >
+                  {selectedDeliveryOption === "collect" && (
+                    <div className="absolute top-2 right-2 bg-primary text-primary-foreground rounded-full p-1 shadow-lg">
+                      <Check className="h-3.5 w-3.5" />
+                    </div>
+                  )}
                   <div className="flex items-start gap-3">
                     <MapPin
                       className={cn(
@@ -111,7 +127,14 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                       )}
                     />
                     <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-sm mb-1">Collect</div>
+                      <div
+                        className={cn(
+                          "font-semibold text-sm mb-1",
+                          selectedDeliveryOption === "collect" && "text-primary"
+                        )}
+                      >
+                        Collect
+                      </div>
                       <div className="text-xs text-muted-foreground mb-2">
                         From Drogheda, Ireland
                       </div>
@@ -124,12 +147,17 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                 <button
                   onClick={() => setSelectedDeliveryOption("delivery")}
                   className={cn(
-                    "text-left p-4 rounded-lg border-2 transition-all",
+                    "relative text-left p-4 rounded-lg border-2 transition-all",
                     selectedDeliveryOption === "delivery"
-                      ? "border-primary bg-primary/5 ring-2 ring-primary/20"
+                      ? "border-primary bg-primary/10 ring-2 ring-primary/30 shadow-md"
                       : "border-border hover:border-primary/50"
                   )}
                 >
+                  {selectedDeliveryOption === "delivery" && (
+                    <div className="absolute top-2 right-2 bg-primary text-primary-foreground rounded-full p-1 shadow-lg">
+                      <Check className="h-3.5 w-3.5" />
+                    </div>
+                  )}
                   <div className="flex items-start gap-3">
                     <Truck
                       className={cn(
@@ -140,7 +168,15 @@ export function ProductDisplay({ product }: ProductDisplayProps) {
                       )}
                     />
                     <div className="flex-1 min-w-0">
-                      <div className="font-semibold text-sm mb-1">Delivery</div>
+                      <div
+                        className={cn(
+                          "font-semibold text-sm mb-1",
+                          selectedDeliveryOption === "delivery" &&
+                            "text-primary"
+                        )}
+                      >
+                        Delivery
+                      </div>
                       <div className="text-xs text-muted-foreground mb-2">
                         +€15 delivery fee
                       </div>
